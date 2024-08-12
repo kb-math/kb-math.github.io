@@ -49,6 +49,7 @@ body {font-family: Arial;}
 
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
+  <button class="tablinks" onclick="openTab(event, 'Code/Projects')" id="codeProjects">Code/Projects</button>
   <button class="tablinks" onclick="openTab(event, 'Research')" id="research">Research</button>
 </div>
 
@@ -57,26 +58,32 @@ body {font-family: Arial;}
   <p> I was a Mathematics postdoc at UNSW and University of Sydney. See <a href="?tab=research"> here </a> for my list of Publications. </p>
 </div>
 
+<div id="Code/Projects" class="tabcontent">
+  <h3> Electrodynamics Simulations </h3>
+  <p> Add simulations of charge particle. Add Antenna simulation. </p>
+  <h3> Wave Simulation </h3>
+  <p> Add some stuff </p>
+</div>
+
 <div id="Research" class="tabcontent">
-  <h3>Research</h3>
-<h2> Preprints (Submitted) </h2>
-
-<p> <i> Counting elements of the congruence subgroup </i> (joint with I.E.Shparlinski) <a href="https://arxiv.org/abs/2308.10485"> arXiv </a>
-
-<p> <i> Counting embeddings of free groups into <b>SL<sub>2</sub>(ℤ)</b> and its subgroups </i> (joint with A.Ostafe and I.E.Shparlinski) <a href="https://arxiv.org/abs/2304.10980"> arXiv </a>
-
 
 <h2>Puplications (Accepted/Published)</h2>
+
+<p> <i> Counting elements of the congruence subgroup </i> (joint with I.E.Shparlinski) <br> <b> Canadian Mathematical Bulletin. </b>  Published online 2024:1-15. doi:10.4153/S0008439524000365<a href="https://arxiv.org/abs/2308.10485"> arXiv </a>
+
+<p> <i> Counting embeddings of free groups into <b>SL<sub>2</sub>(ℤ)</b> and its subgroups </i> (joint with A.Ostafe and I.E.Shparlinski) <br> To appear in <b> Annali della Scuola Normale Superiore di Pisa, Classe di Scienze </b> <a href="https://arxiv.org/abs/2304.10980"> arXiv </a>
+
+
 
 <p> <i> Glasner property for linear group actions and their products </i> (joint with A. Fish) <a href="https://arxiv.org/abs/2210.16973"> arXiv </a> <br> <b> Mathematische Zeitschrift. </b> 303, 99 (2023). <a href="https://doi.org/10.1007/s00209-023-03266-x "> https://doi.org/10.1007/s00209-023-03266-x </a> </p>
 
 <p> <i> Quantitative twisted patterns in sets of positive density </i> (joint with A. Fish) <a href="https://arxiv.org/abs/2102.05862"> arXiv </a> <br> Accepted in <b> Discrete Analysis </b> </p>
 
-<p> <i> Arithmetic subtrees in large subsets of products of trees </i> (joint with A. Fish) <a href="https://arxiv.org/abs/2111.01452"> arXiv </a> <br> Accepted in <b> Journal d’Analyse Mathématique </b> </p>
+<p> <i> Arithmetic subtrees in large subsets of products of trees </i> (joint with A. Fish) <a href="https://arxiv.org/abs/2111.01452"> arXiv </a> <br> <b> Journal d’Analyse Mathématique. </b>  150 (2023), no. 1, 359--381. </p>
 
-<p> <i> Glasner property for unipotently generated group actions on tori </i> (joint with A.Fish) <a href="https://arxiv.org/abs/2103.08912"> arXiv </a>  <br> Accepted in <b> Israel Journal of Mathematics </b>  </p>
+<p> <i> Glasner property for unipotently generated group actions on tori </i> (joint with A.Fish) <a href="https://arxiv.org/abs/2103.08912"> arXiv </a> <br> <b> Israel Journal of Mathematics. </b> 255 (2023), no. 1, 109--122. </p>
 
-<p> <i> Reconstructing a minimal topological dynamical system from a set of return times </i> (Joint with A.Fish), <a href="https://arxiv.org/abs/2107.03631"> arXiv </a> <br> Accepted in <b> <a href = "https://www.cambridge.org/core/journals/ergodic-theory-and-dynamical-systems/article/abs/reconstructing-a-minimal-topological-dynamical-system-from-a-set-of-return-times/D264E47E416303AA2CDB0BD75CC3A4A0"> Ergodic Theory and Dynamical Systems </b> </a>  </p>
+<p> <i> Reconstructing a minimal topological dynamical system from a set of return times </i> (Joint with A.Fish), <a href="https://arxiv.org/abs/2107.03631"> arXiv </a> <br> <b> Ergodic Theory and Dynamical Systems. </b> 42 (2022), no. 9, 2723--2739. </p>
 
 <p>  <i> Spherical recurrence and locally isometric embeddings of trees into positive density subsets of ℤ<sup>d</sup>,</i> <a href="http://arxiv.org/abs/1606.07596"> arXiv </a> <br> <b>Math. Proc. Cambridge Philos. Soc.</b> 165 (2018), no. 2, 267–278.</p>
 
@@ -130,7 +137,7 @@ function openTab(evt, tabName) {
   evt.currentTarget.className += " active";
 }
 
-let possibleTabs = new Set(["defaultOpen", "research"]);
+let possibleTabs = new Set(["defaultOpen", "research", "codeProjects"]);
 
 let params = new URLSearchParams(location.search);
 let currentTab = params.get('tab') || "defaultOpen";
