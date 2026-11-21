@@ -1,179 +1,443 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kamil Bulinski</title>
+  <meta name="description" content="Kamil Bulinski — Researcher in Computer Science (Game Theory, Networking) and Mathematics (Ergodic Theory, Number Theory, Topological Dynamics).">
+  <meta name="author" content="Kamil Bulinski">
+  <meta property="og:title" content="Kamil Bulinski">
+  <meta property="og:description" content="Researcher in Computer Science and Mathematics">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kb-math.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #555;
+      --border: #e5e5e5;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --tab-bg: #f1f5f9;
+      --tab-active: #ffffff;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --max-width: 820px;
+    }
 
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
 
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
+    header {
+      margin-bottom: 2rem;
+    }
 
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-</style>
+    header h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.25rem;
+    }
+
+    header .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0.25rem;
+      background: var(--tab-bg);
+      padding: 0.3rem;
+      border-radius: 12px;
+      margin-bottom: 1.75rem;
+      border: 1px solid var(--border);
+    }
+
+    .tablinks {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 0.7rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .tablinks:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.6);
+    }
+
+    .tablinks.active {
+      background: var(--tab-active);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      font-weight: 600;
+    }
+
+    /* Content panels */
+    .tabcontent {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .tabcontent.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.85rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin-top: 2rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2:first-child {
+      margin-top: 0;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 1.75rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    ul {
+      margin: 0.75rem 0 1.25rem 1.4rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+
+    /* Project images */
+    .project-img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin: 1rem 0 1.5rem;
+      box-shadow: var(--shadow);
+      background: #000;
+    }
+
+    /* Publications */
+    .pub {
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pub:last-of-type {
+      border-bottom: none;
+    }
+
+    .pub-title {
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .pub-venue {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .pub-meta {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Talks / visits */
+    .item-list p {
+      margin-bottom: 0.55rem;
+    }
+
+    footer {
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.5rem 1rem 3rem;
+      }
+      header h1 {
+        font-size: 1.55rem;
+      }
+      .tabs {
+        flex-direction: column;
+      }
+      .tablinks {
+        text-align: left;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>Kamil Bulinski</h1>
+      <p class="subtitle">Computer Science &amp; Mathematics</p>
+    </header>
 
-<h2>Kamil Bulinski</h2>
+    <nav class="tabs" role="tablist">
+      <button class="tablinks active" role="tab" onclick="openTab(event, 'About')" id="defaultOpen" aria-selected="true">About</button>
+      <button class="tablinks" role="tab" onclick="openTab(event, 'Projects')" id="codeProjects" aria-selected="false">Personal Projects</button>
+      <button class="tablinks" role="tab" onclick="openTab(event, 'Research')" id="research" aria-selected="false">Research</button>
+    </nav>
 
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
-  <button class="tablinks" onclick="openTab(event, 'Code/Projects')" id="codeProjects">Personal Projects</button>
-  <button class="tablinks" onclick="openTab(event, 'Research')" id="research">Research</button>
-</div>
+    <!-- About -->
+    <div id="About" class="tabcontent active" role="tabpanel">
+      <p>I am currently a Researcher in Computer Science at Adelaide University, working in Game Theory and Computer Networking (Emulating MANETs).</p>
 
-<div id="About" class="tabcontent">
-  <h3>About</h3>
+      <p>I was a Mathematics postdoc at UNSW and the University of Sydney, specializing in Ergodic Theory, Number Theory and Topological Dynamics. See the <a href="?tab=research" onclick="document.getElementById('research').click(); return false;">Research</a> tab for my list of publications.</p>
 
-  <p> I am currently a Reseacher in Computer Science at Adelaide University, working in Game Theory and Computer Networking (Emulating MANETs). </p>
+      <h3>Short CV</h3>
+      <ul>
+        <li><strong>2025–present:</strong> Computer Science Researcher at Adelaide University</li>
+        <li><strong>2021–2024:</strong> Postdocs in Mathematics (UNSW &amp; University of Sydney)</li>
+        <li><strong>2020:</strong> Software Development Engineer II at Amazon Music</li>
+        <li><strong>2017–2020:</strong> Software Engineer (Python, C++) at Minetec (<a href="https://codan.com.au/" target="_blank" rel="noopener">Codan</a>)</li>
+        <li><strong>2014–2017:</strong> PhD in Mathematics at the University of Sydney</li>
+      </ul>
+    </div>
 
-  <p> I was a Mathematics postdoc at UNSW and University of Sydney, specializing in Ergodic Theory, Number Theory and Topological Dynamics. See <a href="?tab=research"> here </a> for my list of Publications. </p>
+    <!-- Projects -->
+    <div id="Projects" class="tabcontent" role="tabpanel">
+      <h3>Electrodynamics Simulations</h3>
+      <p>
+        <a href="https://github.com/kb-math/electrodynamics" target="_blank" rel="noopener">github.com/kb-math/electrodynamics</a><br>
+        Plots various electric fields generated by given moving charges. Below is an example of the electric field emitted by a single positively charged particle (blue dot) moving sinusoidally.
+      </p>
+      <img class="project-img" src="electric_field_moving_charge_demo.gif" alt="Electric field of a moving charged particle" width="800" loading="lazy">
 
-<p>A short CV:
+      <h3>Simulating variable-speed wave equations</h3>
+      <p>
+        <a href="https://github.com/kb-math/wave_simulation" target="_blank" rel="noopener">github.com/kb-math/wave_simulation</a><br>
+        Plots waves travelling through space where the wave speed differs at each point. The example below shows an incoming light wave starting in a fast region (yellow, e.g. air), entering a slower region (blue, e.g. glass), then re-entering the original medium. Reflection and refraction are clearly visible.
+      </p>
+      <img class="project-img" src="Peek2024-08-1218-56-ezgif.com-cut.gif" alt="Variable-speed wave simulation showing refraction and reflection" width="800" loading="lazy">
+      <p>This is simulated by solving a wave equation in which the wave speed is a function of space (rather than a constant). Analytic solutions are generally unavailable, so the finite-difference method is used.</p>
+    </div>
 
-<ul>
-  <li> 2025-current: Computer Science Researcher at Adelaide University. </li>
-  <li>2021-2024: Postdocs in Mathematics. </li>
-  <li> 2020-2020: Software Development Engineer II at Amazon Music.</li>
-  <li>2017-2020: Software Engineer (Python, C++) at Minetec (<a href="https://codan.com.au/">Codan</a>)</li>
-  <li>2014-2017: PhD in Mathematics at University of Sydney.</li>
-</ul> 
+    <!-- Research -->
+    <div id="Research" class="tabcontent" role="tabpanel">
+      <h2>Publications (Accepted / Published)</h2>
 
-</p>
+      <div class="pub">
+        <div class="pub-title">Pure or Unstable: A Generic Dichotomy for Strong Stackelberg Commitments</div>
+        <div class="pub-meta">(joint with L. White and H. Nguyen) · Submitted · <a href="stackelberg_games-submitted.pdf">preprint</a></div>
+      </div>
 
+      <div class="pub">
+        <div class="pub-title">Counting elements of the congruence subgroup</div>
+        <div class="pub-meta">(joint with I. E. Shparlinski)</div>
+        <div class="pub-venue">Canadian Mathematical Bulletin</div>
+        <div class="pub-meta">Published online 2024:1–15. doi:10.4153/S0008439524000365 · <a href="https://arxiv.org/abs/2308.10485" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
+      <div class="pub">
+        <div class="pub-title">Counting embeddings of free groups into SL<sub>2</sub>(ℤ) and its subgroups</div>
+        <div class="pub-meta">(joint with A. Ostafe and I. E. Shparlinski)</div>
+        <div class="pub-venue">Annali della Scuola Normale Superiore di Pisa, Classe di Scienze</div>
+        <div class="pub-meta">To appear · <a href="https://arxiv.org/abs/2304.10980" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
-</div>
+      <div class="pub">
+        <div class="pub-title">Glasner property for linear group actions and their products</div>
+        <div class="pub-meta">(joint with A. Fish)</div>
+        <div class="pub-venue">Mathematische Zeitschrift</div>
+        <div class="pub-meta">303, 99 (2023) · <a href="https://doi.org/10.1007/s00209-023-03266-x" target="_blank" rel="noopener">doi</a> · <a href="https://arxiv.org/abs/2210.16973" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
-<div id="Code/Projects" class="tabcontent">
-  <h3> Electrodynamics Simulations </h3>
-  <p> See <a href="https://github.com/kb-math/electrodynamics"> https://github.com/kb-math/electrodynamics </a>. This plots various electric fields generated by given moving charges. For example, below is a plot of the electric field emmited by a single positively charged particle (blue dot shown) moving sinusoidally. </p>
-  <img src="electric_field_moving_charge_demo.gif" width = 80%>
-  
-  <h3> Simulating variable-speed wave equations </h3>
-  See <a href="https://github.com/kb-math/wave_simulation"> https://github.com/kb-math/wave_simulation </a>. This plots waves travelling through space where the wave-speed is different at each point. For example, here we see an incoming light wave starting at a region (yellow) with fast wave-speed (e.g., air) entering a region (blue) with slower wave-speed (e.g., glass) and then re-entering the original medium (air). Notice the reflection and refraction. 
-  <p> <img src="Peek2024-08-1218-56-ezgif.com-cut.gif" width = 80%> </p>
+      <div class="pub">
+        <div class="pub-title">Quantitative twisted patterns in sets of positive density</div>
+        <div class="pub-meta">(joint with A. Fish)</div>
+        <div class="pub-venue">Discrete Analysis</div>
+        <div class="pub-meta">Accepted · <a href="https://arxiv.org/abs/2102.05862" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
-  This is simulated by solving a wave equation where the wave speed is a function of space (rather than a constant). This in general is probably(?) impossible analytically, so we have applied the numerical method known as the finite difference method.
-</div>
+      <div class="pub">
+        <div class="pub-title">Arithmetic subtrees in large subsets of products of trees</div>
+        <div class="pub-meta">(joint with A. Fish)</div>
+        <div class="pub-venue">Journal d’Analyse Mathématique</div>
+        <div class="pub-meta">150 (2023), no. 1, 359–381 · <a href="https://arxiv.org/abs/2111.01452" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
-<div id="Research" class="tabcontent">
+      <div class="pub">
+        <div class="pub-title">Glasner property for unipotently generated group actions on tori</div>
+        <div class="pub-meta">(joint with A. Fish)</div>
+        <div class="pub-venue">Israel Journal of Mathematics</div>
+        <div class="pub-meta">255 (2023), no. 1, 109–122 · <a href="https://arxiv.org/abs/2103.08912" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
-<h2>Puplications (Accepted/Published)</h2>
+      <div class="pub">
+        <div class="pub-title">Reconstructing a minimal topological dynamical system from a set of return times</div>
+        <div class="pub-meta">(joint with A. Fish)</div>
+        <div class="pub-venue">Ergodic Theory and Dynamical Systems</div>
+        <div class="pub-meta">42 (2022), no. 9, 2723–2739 · <a href="https://arxiv.org/abs/2107.03631" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
-<p> <i> Pure or Unstable: A Generic Dichotomy for Strong Stackelberg Commitments </i> (joint with L. White and H. Nguyen) <br> Submitted, preprint available <a href="stackelberg_games-submitted.pdf">here</a>.</p>
+      <div class="pub">
+        <div class="pub-title">Spherical recurrence and locally isometric embeddings of trees into positive density subsets of ℤ<sup>d</sup></div>
+        <div class="pub-venue">Math. Proc. Cambridge Philos. Soc.</div>
+        <div class="pub-meta">165 (2018), no. 2, 267–278 · <a href="https://arxiv.org/abs/1606.07596" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
-<p> <i> Counting elements of the congruence subgroup </i> (joint with I.E.Shparlinski) <br> <b> Canadian Mathematical Bulletin. </b>  Published online 2024:1-15. doi:10.4153/S0008439524000365<a href="https://arxiv.org/abs/2308.10485"> arXiv </a>
+      <div class="pub">
+        <div class="pub-title">Twisted patterns in large subsets of ℤ<sup>N</sup></div>
+        <div class="pub-meta">(joint with M. Björklund)</div>
+        <div class="pub-venue">Commentarii Mathematici Helvetici</div>
+        <div class="pub-meta">92 (2017), no. 3, 621–640 · <a href="https://arxiv.org/abs/1512.01719" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
-<p> <i> Counting embeddings of free groups into <b>SL<sub>2</sub>(ℤ)</b> and its subgroups </i> (joint with A.Ostafe and I.E.Shparlinski) <br> To appear in <b> Annali della Scuola Normale Superiore di Pisa, Classe di Scienze </b> <a href="https://arxiv.org/abs/2304.10980"> arXiv </a>
+      <div class="pub">
+        <div class="pub-title">Multidimensional lower density versions of Plünnecke inequalities</div>
+        <div class="pub-venue">Electronic Journal of Combinatorics</div>
+        <div class="pub-meta">24 (2017), no. 3 · <a href="https://www.combinatorics.org/ojs/index.php/eljc/article/view/v24i3p34" target="_blank" rel="noopener">journal</a> · <a href="https://arxiv.org/abs/1604.01462" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
+      <div class="pub">
+        <div class="pub-title">Plünnecke inequalities for measure graphs with applications</div>
+        <div class="pub-meta">(joint with A. Fish)</div>
+        <div class="pub-venue">Ergodic Theory and Dynamical Systems</div>
+        <div class="pub-meta">37 (2017), no. 2, 418–439 · <a href="https://arxiv.org/abs/1407.4174" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
 
+      <h2>Research visits</h2>
+      <div class="item-list">
+        <p><strong>Chalmers University</strong> (Gothenburg, Sweden) · September–October 2015</p>
+      </div>
 
-<p> <i> Glasner property for linear group actions and their products </i> (joint with A. Fish) <a href="https://arxiv.org/abs/2210.16973"> arXiv </a> <br> <b> Mathematische Zeitschrift. </b> 303, 99 (2023). <a href="https://doi.org/10.1007/s00209-023-03266-x "> https://doi.org/10.1007/s00209-023-03266-x </a> </p>
+      <h2>Selected talks</h2>
+      <div class="item-list">
+        <p>(2023) Number Theory Down Under 11, ANU (Canberra)</p>
+        <p>(2023) Trends in Metric Number Theory, La Trobe University Bendigo <em>(Invited speaker)</em></p>
+        <p>(2022) Dynamics in NZ, Karioitahi Beach (New Zealand)</p>
+        <p>(2022) Number Theory Down Under 10, University of Queensland</p>
+        <p>(2021) AustMS — Dynamical Systems and Ergodic Theory session</p>
+        <p>(2021) Number Theory Down Under 9, University of Sydney <em>(Invited speaker)</em></p>
+        <p>(2016) <a href="http://www.maths.usyd.edu.au/ET2016/" target="_blank" rel="noopener">Ergodic Theory and its Applications</a>, University of Sydney</p>
+        <p>(2016) <a href="http://theoryofnumbers.com/" target="_blank" rel="noopener">CANT 2016</a>, CUNY Graduate Center (New York)</p>
+        <p>(2015) Wrocław University of Technology (Poland)</p>
+        <p>(2015) <a href="http://web.maths.unsw.edu.au/~jagr/ADS_NT_GT.html" target="_blank" rel="noopener">Workshop on Algebraic, Number Theoretic and Graph Theoretic Aspects of Dynamical Systems</a>, UNSW</p>
+        <p>(2014) Australian Mathematical Society meeting <em>(honourable mention, student talk prize)</em></p>
+        <p>(2014) Sydney Dynamics Group seminar</p>
+      </div>
+    </div>
 
-<p> <i> Quantitative twisted patterns in sets of positive density </i> (joint with A. Fish) <a href="https://arxiv.org/abs/2102.05862"> arXiv </a> <br> Accepted in <b> Discrete Analysis </b> </p>
+    <footer>
+      Kamil Bulinski · <a href="https://github.com/kb-math" target="_blank" rel="noopener">GitHub</a>
+    </footer>
+  </div>
 
-<p> <i> Arithmetic subtrees in large subsets of products of trees </i> (joint with A. Fish) <a href="https://arxiv.org/abs/2111.01452"> arXiv </a> <br> <b> Journal d’Analyse Mathématique. </b>  150 (2023), no. 1, 359--381. </p>
+  <script>
+    function openTab(evt, tabName) {
+      // Hide all panels
+      document.querySelectorAll('.tabcontent').forEach(el => {
+        el.classList.remove('active');
+        el.style.display = 'none';
+      });
 
-<p> <i> Glasner property for unipotently generated group actions on tori </i> (joint with A.Fish) <a href="https://arxiv.org/abs/2103.08912"> arXiv </a> <br> <b> Israel Journal of Mathematics. </b> 255 (2023), no. 1, 109--122. </p>
+      // Deactivate all buttons
+      document.querySelectorAll('.tablinks').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
 
-<p> <i> Reconstructing a minimal topological dynamical system from a set of return times </i> (Joint with A.Fish), <a href="https://arxiv.org/abs/2107.03631"> arXiv </a> <br> <b> Ergodic Theory and Dynamical Systems. </b> 42 (2022), no. 9, 2723--2739. </p>
+      // Show selected panel
+      const panel = document.getElementById(tabName);
+      panel.style.display = 'block';
+      panel.classList.add('active');
 
-<p>  <i> Spherical recurrence and locally isometric embeddings of trees into positive density subsets of ℤ<sup>d</sup>,</i> <a href="http://arxiv.org/abs/1606.07596"> arXiv </a> <br> <b>Math. Proc. Cambridge Philos. Soc.</b> 165 (2018), no. 2, 267–278.</p>
+      // Activate button
+      evt.currentTarget.classList.add('active');
+      evt.currentTarget.setAttribute('aria-selected', 'true');
 
-<p> <i> Twisted patterns in large subsets of ℤ<sup>N</sup>, </i> (Joint with M. Björklund) <a href="http://arxiv.org/abs/1512.01719"> arXiv </a> <br> <b> Commentarii Mathematici Helvetici.</b> 92 (2017), no. 3, 621–640. </p>
+      // Update URL without reload
+      const paramMap = {
+        'About': 'defaultOpen',
+        'Projects': 'codeProjects',
+        'Research': 'research'
+      };
+      const param = paramMap[tabName] || 'defaultOpen';
+      const url = new URL(window.location);
+      if (param === 'defaultOpen') {
+        url.searchParams.delete('tab');
+      } else {
+        url.searchParams.set('tab', param);
+      }
+      history.replaceState(null, '', url);
+    }
 
-<p> <i> Multidimensional lower density versions of Plünnecke inequalities, </i> <a href="http://arxiv.org/abs/1604.01462"> arXiv </a>  <br> <b>Electronic Journal of Combinatorics.</b> 24 (2017), no. 3. Available at: <a href="https://www.combinatorics.org/ojs/index.php/eljc/article/view/v24i3p34"> https://www.combinatorics.org/ojs/index.php/eljc/article/view/v24i3p34 </a>. <p>
-
-<p> <i> Plünnecke inequalities for measure graphs with applications, </i> (joint with A. Fish) <a href="http://arxiv.org/abs/1407.4174"> arXiv </a><br> <b> Ergodic Theory and Dynamical Systems</b>,
-Cambridge University Press. 37 (2017), no. 2, 418–439. <p>
-
-<h2>Research visits</h2>
-
-<p> <b> Chalmers University (Gothenburg, Sweden) </b> <br> September-October 2015 </p>
-
-<h2> Selected Talks </h2> 
-
-<p> (2023) Number Theory Down under 11 at ANU (Canberra). </p>
-<p> (2023) Trends in Metric Number Theory at Latrobe University Bendigo (Invited speaker) </p>
-<p> (2022) Dynamics in NZ at Karioitahi Beach (New Zealand) </p>
-<p> (2022) Number Theory Down Under 10 at the Univeristy of Queensland. </p>
-<p> (2021) AustMS: Dynamical Systems and Ergodic Theory session. December 2021. </p>
-<p> (2021) Invited Speaker for Number Theory Down Under 9 at the University
-of Sydney.</p>
-
-
-<p> (2016) <a href="http://www.maths.usyd.edu.au/ET2016/"> Ergodic Theory and its Applications </a> at Sydney University. </p>
-
-<p> (2016) <a href="http://theoryofnumbers.com/"> CANT 2016 </a> at the CUNY Graduate Center (New York). </p>
-
-<p> (2015) Wrocław University of Technology (Poland).  </p>
-
-<p> (2015) <a href="http://web.maths.unsw.edu.au/~jagr/ADS_NT_GT.html">Workshop on Algebraic, Number Theoretic and Graph Theoretic Aspects of Dynamical Systems <a> UNSW </p>
-
-<p> (2014) Australian Mathematics Society meeting (hon. mention for student talk prize). </p>
-
-<p> (2014) Sydney Dynamics Group seminar. </p>
-</div>
-
-<script>
-function openTab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-let possibleTabs = new Set(["defaultOpen", "research", "codeProjects"]);
-
-let params = new URLSearchParams(location.search);
-let currentTab = params.get('tab') || "defaultOpen";
-
-if (!possibleTabs.has(currentTab)) {
-	currentTab = "defaultOpen";
-}
-
-document.getElementById(currentTab).click()
-
-</script>
-   
+    // Initialise from URL
+    (function () {
+      const possible = new Set(['defaultOpen', 'research', 'codeProjects']);
+      const params = new URLSearchParams(location.search);
+      let current = params.get('tab') || 'defaultOpen';
+      if (!possible.has(current)) current = 'defaultOpen';
+      document.getElementById(current).click();
+    })();
+  </script>
 </body>
-</html> 
+</html>
